@@ -1,0 +1,79 @@
+<header>
+	<h3 class="text-center">{{ isCreate ? 'Criar Usuário' : 'Login' }}</h3>
+</header>
+
+<form [formGroup]="form" class="p-5" autocomplete="off">
+	<div class="mb-3" *ngIf="isCreate">
+		<input class="form-control" placeholder="Nome" formControlName="name" />
+
+		<div
+			*ngIf="
+				getFormController('name').invalid &&
+				(getFormController('name')?.dirty || getFormController('name')?.touched)
+			">
+			<div
+				*ngIf="getFormController('name')?.errors?.['required']"
+				class="text-danger ps-1">
+				Campo obrigatório
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<input
+			class="form-control"
+			placeholder="Nome de usuário"
+			formControlName="userName" />
+		<div
+			*ngIf="
+				getFormController('userName').invalid &&
+				(getFormController('userName')?.dirty ||
+					getFormController('userName')?.touched)
+			">
+			<div
+				*ngIf="getFormController('userName')?.errors?.['required']"
+				class="text-danger ps-1">
+				Campo obrigatório
+			</div>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<input
+			class="form-control"
+			placeholder="Senha"
+			type="password"
+			formControlName="password" />
+
+		<div
+			*ngIf="
+				getFormController('password').invalid &&
+				(getFormController('password')?.dirty ||
+					getFormController('password')?.touched)
+			">
+			<div
+				*ngIf="getFormController('password')?.errors?.['required']"
+				class="text-danger ps-1">
+				Campo obrigatório
+			</div>
+		</div>
+	</div>
+
+	<div class="text-center">
+		<button class="btn btn-outline-primary mx-2" (click)="onCreateChange()">
+			{{ isCreate ? 'Voltar' : 'Primeiro Acesso' }}
+		</button>
+
+		<button class="btn btn-primary mx-2" (click)="onSave()">
+			{{ isCreate ? 'Criar' : 'Login' }}
+		</button>
+	</div>
+
+	<ngb-alert
+		class="mt-4"
+		type="warning"
+		(closed)="errorMessage = ''"
+		*ngIf="errorMessage">
+		{{ errorMessage }}</ngb-alert
+	>
+</form>

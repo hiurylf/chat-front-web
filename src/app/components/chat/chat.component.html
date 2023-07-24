@@ -1,0 +1,12 @@
+<div
+	*ngFor="let message of messages | orderBy : '-createdAt'"
+	class="border border-secondary-subtle rounded mb-1 p-1"
+	[ngClass]="
+		currentUser.userName === message.user?.userName ? 'bg-info' : 'bg-light'
+	">
+	<div class="border-bottom border-secondary-subtle">
+		{{ message.createdAt | date : 'dd/MM/yy - HH:mm' }} -
+		{{ message.user?.userName }}
+	</div>
+	<div class="message">{{ message.text }}</div>
+</div>

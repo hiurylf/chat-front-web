@@ -1,0 +1,19 @@
+.middle-section {
+  min-height: calc(100vh - 200px) !important;
+  max-height: calc(100vh - 200px) !important;
+  height: calc(100vh - 200px) !important;
+
+  overflow: auto;
+
+  &__users {
+    min-width: 180px;
+  }
+}
+
+.header {
+  height: 75px;
+}
+
+.color-online {
+  color: limegreen;
+}

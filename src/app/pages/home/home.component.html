@@ -1,0 +1,50 @@
+<header
+	class="header px-2 border border-secondary-subtle rounded d-flex justify-content-between align-items-center"
+	*ngIf="user$ | async as user">
+	<h2 class="m-0">Olá {{ user.name | titlecase }}</h2>
+
+	<ngb-alert
+		class="m-0"
+		type="warning"
+		(closed)="lastMessage = undefined"
+		*ngIf="lastMessage">
+		Você tem mensagem de: <b>{{ lastMessage!.user?.userName }}</b></ngb-alert
+	>
+</header>
+
+<main class="rounded pt-2 d-flex flex-column">
+	<section class="middle-section row mx-0 gap-2 no-wrap">
+		<div
+			class="col-3 border border-secondary-subtle rounded middle-section__users">
+			<div *ngFor="let user of users">
+				{{ user.userName }} -
+				<i
+					class="bi bi-check-square-fill color-success"
+					[ngClass]="
+						user.status
+							? 'bi-check-square-fill color-online'
+							: 'bi-check-square'
+					"></i>
+			</div>
+		</div>
+
+		<div class="col p-2 border border-secondary-subtle rounded">
+			<app-chat
+				[messages]="messages"
+				[currentUser]="(user$ | async)!"></app-chat>
+		</div>
+	</section>
+
+	<div class="input-group flex-fill mt-4">
+		<input
+			class="form-control"
+			placeholder="Digite uma mensagem"
+			[formControl]="messageFormControl" />
+
+		<span class="input-group-text">
+			<button type="button" class="btn btn-success" (click)="onSendMessage()">
+				<i class="bi bi-send"></i>
+			</button>
+		</span>
+	</div>
+</main>
