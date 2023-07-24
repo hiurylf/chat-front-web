@@ -1,3 +1,3 @@
 export const environment: { [k: string]: string } = {
-	api: 'http://localhost:3000',
+	api: 'chat-node-backend-production.up.railway.app',
 };
