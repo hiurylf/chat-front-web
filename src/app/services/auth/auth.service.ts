@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap, catchError, throwError } from 'rxjs';
 import { environment } from '@env/environment';
 import { IUser } from '@interfaces/user';
+import { isDevMode } from '@angular/core';
 
 interface IAuthResponse {
 	token: string;
@@ -13,7 +14,8 @@ interface IAuthResponse {
 	providedIn: 'root',
 })
 export class AuthService {
-	serviceUrl = environment['api'];
+	serviceUrl = isDevMode() ? environment['api'] : environment['apiProd'];
+
 	localStorageAuthKey = 'chat-web-auth';
 	userAuth$ = new BehaviorSubject<IAuthResponse | null>(null);
 

@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { filter, map, Observable } from 'rxjs';
-import { MessageService } from '@services/message/message.service';
-import { UserService } from '@services/user/user.service';
 import { IUser } from '@interfaces/user';
 import { IMessage } from '@interfaces/message';
 import { AuthService } from '@services/auth/auth.service';
@@ -25,8 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private readonly authService: AuthService,
-		private readonly websocketService: WebsocketService,
-		private readonly userService: UserService
+		private readonly websocketService: WebsocketService
 	) {
 		this.user$ = this.authService.userAuth$.pipe(
 			filter(data => !!data?.user),

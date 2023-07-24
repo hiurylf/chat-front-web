@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { io } from 'socket.io-client';
 import { environment } from '@env/environment';
 import { Socket } from 'socket.io-client/build/esm/socket';
@@ -8,7 +8,7 @@ import { AuthService } from '@services/auth/auth.service';
 	providedIn: 'root',
 })
 export class WebsocketService {
-	private serviceUrl = environment['api'];
+	serviceUrl = isDevMode() ? environment['api'] : environment['apiProd'];
 	private socket?: Socket;
 
 	constructor(private readonly authService: AuthService) {}
