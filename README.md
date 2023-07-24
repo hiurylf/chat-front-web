@@ -10,7 +10,7 @@ Goals:
 ## Prerequisites
 
 1. To run this project you need to have the Angular framework installed locally, details for the installation visit this link: [setup-local](https://angular.io/guide/setup-local)
-2. Make sure you are roaming the [back-end](https://github.com/hiurylf/chat-node-backend) of this application
+2. Make sure you are running the [back-end](https://github.com/hiurylf/chat-node-backend) of this application
 
 ## Development server
 
