@@ -2,16 +2,15 @@
 
 Goals:
 
-1. List pokemons using the [pokeApi](https://pokeapi.co/)
-2. Filter by name or id
-3. Pagination - with 10 each page
-4. Pokemon details in a separate route `/home/(id or name)`
-   - It is also possible to open the modal by clicking on the pokémon image
-5. It is possible to add comment and favorite the pokemon
+1. Login / SignIn page
+2. Chat page
+3. Token jwt interceptor manager
+4. Security routers
 
 ## Prerequisites
 
-To run this project you need to have the Angular framework installed locally, details for the installation visit this link: [setup-local](https://angular.io/guide/setup-local)
+1. To run this project you need to have the Angular framework installed locally, details for the installation visit this link: [setup-local](https://angular.io/guide/setup-local)
+2. Make sure you are roaming the [back-end](https://github.com/hiurylf/chat-node-backend) of this application
 
 ## Development server
 
@@ -30,5 +29,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 [eslint](https://eslint.org/)
 
 [prettier](https://prettier.io/)
-
-[jest](https://jestjs.io/)
