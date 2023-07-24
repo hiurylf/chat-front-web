@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { filter, map, Observable } from 'rxjs';
 import { IUser } from '@interfaces/user';
@@ -31,6 +31,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 		);
 
 		this.socket = this.websocketService.setupSocketConnection();
+	}
+
+	@HostListener('document:keypress', ['$event'])
+	handleKeyboardEvent(event: KeyboardEvent) {
+		if (event.key === 'Enter' && this.messageFormControl.value) {
+			this.onSendMessage();
+		}
 	}
 
 	public onSendMessage(): void {
